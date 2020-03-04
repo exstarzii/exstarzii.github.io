@@ -11,12 +11,16 @@ let rightTemp;
 let ETemp;
 
 function Perfom(){
+  table = document.getElementById("table");
+  table.innerHTML ="";
+  document.getElementById("answer").innerHTML = "";
+  WriteDefualtValue();
 
   leftPoint =parseFloat(document.getElementById("leftPointText").value);
   rightPoint = parseFloat(document.getElementById("rightPointText").value);
   E = parseFloat(document.getElementById("EText").value);
   formula = document.getElementById("formulaText").value;
-  table = document.getElementById("table");
+  
 
   leftTemp = leftPoint;
   rightTemp = rightPoint;
@@ -38,7 +42,11 @@ function Perfom(){
     //alert(x);
     f = eval(formula);
     //alert(f);
-    if(f > 0){
+    if(f==0){
+      document.getElementById("answer").innerHTML = "ответ: "+x;
+      break;
+    }
+    if(f < 0){
       leftTemp = x;
     }else{
       rightTemp = x;
@@ -60,7 +68,7 @@ function WriteValue(i){
   table.appendChild(tr);
 
   let td = document.createElement("td");
-  let text = document.createTextNode(i);
+  let text = document.createTextNode(i+1);
   tr.appendChild(td);
   td.appendChild(text);
 
@@ -77,6 +85,33 @@ function WriteValue(i){
 
   td = document.createElement("td");
   text = document.createTextNode(ETemp);
+  tr.appendChild(td);
+  td.appendChild(text);
+}
+
+function WriteDefualtValue(){
+  table = document.getElementById("table");
+  let tr = document.createElement("tr");
+  table.appendChild(tr);
+
+  let td = document.createElement("th");
+  let text = document.createTextNode("n");
+  tr.appendChild(td);
+  td.appendChild(text);
+
+  td = document.createElement("th");
+  text = document.createTextNode("a");
+  
+  tr.appendChild(td);
+  td.appendChild(text);
+
+  td = document.createElement("th");
+  text = document.createTextNode("b");
+  tr.appendChild(td);
+  td.appendChild(text);
+
+  td = document.createElement("th");
+  text = document.createTextNode("e");
   tr.appendChild(td);
   td.appendChild(text);
 }
