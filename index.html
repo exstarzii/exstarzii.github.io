@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<head>
+    <meta charset="utf-8">
+    <script src="js.js"></script>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <p><label>левая точка <input type="text" id="leftPointText" value="0.5"></label><p>
+    <p><label>правая точка <input type="text" id="rightPointText" value="1.57"></label></p>
+    <p><label>погрешность Е <input type="text" id="EText" value="0.001"></label></p>
+    <p><label>формула <input type="text" id="formulaText" value="x^3-x-sin(x)"></label>
+    <p><input type="button" value="рассчитать" onclick="Perfom()">
+    <input type="button" value="добавить строчку" onclick="WriteValue()"></p>
+    <table id="table">
+        <tr>
+            <th>
+                n
+            </th>
+            <th>
+                a
+            </th>
+            <th>
+                b
+            </th>
+            <th>
+                e
+            </th>
+        </tr>
+    </table>
+</body>
