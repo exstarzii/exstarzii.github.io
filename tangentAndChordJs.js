@@ -9,7 +9,6 @@ let f2; // f"(x)
 let table;
 let needSignColumn =false;
 let sign="+";
-// 3.44948974278318
 let ETemp;
 
 function Perfom(){
@@ -47,7 +46,6 @@ function Perfom(){
     
     if(ETemp.lt(E)){ //если точность меньше заданной(по значению)
       break;
-      //document.getElementById("answer").innerHTML = "ответ: "+x;
     }
 
     x =(leftPoint+rightPoint)/2;
