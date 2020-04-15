@@ -5,9 +5,6 @@ let rightPoint;
 let E;
 let formula;
 let table;
-
-let leftTemp;
-let rightTemp;
 let ETemp;
 
 function Perfom(){
@@ -16,51 +13,39 @@ function Perfom(){
   document.getElementById("answer").innerHTML = "";
   WriteDefualtValue();
 
-  leftPoint =parseFloat(document.getElementById("leftPointText").value);
-  rightPoint = parseFloat(document.getElementById("rightPointText").value);
-  E = parseFloat(document.getElementById("EText").value);
-  formula = document.getElementById("formulaText").value;
+  leftPoint =nerdamer(document.getElementById("leftPointText").value);
+  rightPoint = nerdamer(document.getElementById("rightPointText").value);
+  E = nerdamer(document.getElementById("EText").value);
+  formula = nerdamer(document.getElementById("formulaText").value);
   
-
-  leftTemp = leftPoint;
-  rightTemp = rightPoint;
   let x; //- C
-  let f;
+  let f_x;
 
   for(let i=0;true;i++){
-    ETemp =Math.abs(leftTemp-rightTemp)/2 ;
+    ETemp =nerdamer('abs(a - b)',{a:leftPoint, b:rightPoint}).evaluate();
     WriteValue(i);
     
-    if(ETemp <= E){
+    if(ETemp.lt(E)){ //если точность меньше заданной(по значению)
       break;
     }
     if(i==40){
       alert("программа высчитала уже 40 шагов, возможно введенные значения приведут к бесконечному циклу, поэтому программа остановлена.");
       break;
     }
-    x=(leftTemp+rightTemp)/2;
+    x =nerdamer('(a + b)/2',{a:leftPoint, b:rightPoint}).evaluate();
     //alert(x);
-    f = eval(formula);
+    f_x = nerdamer(formula,{x:x}).evaluate();
     //alert(f);
-    if(f==0){
-      document.getElementById("answer").innerHTML = "ответ: "+x;
+    if(f_x.eq(0)){
+      document.getElementById("answer").innerHTML = "ответ: "+x.text();
       break;
     }
-    if(f < 0){
-      leftTemp = x;
+    if(f_x.lt(0)){
+      leftPoint = x;
     }else{
-      rightTemp = x;
+      rightPoint = x;
     }
   }
-}
-function sin(x){
-  return Math.sin(x);
-}
-function cos(x){
-  return Math.cos(x);
-}
-function ln(x){
-  return Math.log(x);
 }
 function WriteValue(i){
   table = document.getElementById("table");
@@ -73,18 +58,18 @@ function WriteValue(i){
   td.appendChild(text);
 
   td = document.createElement("td");
-  text = document.createTextNode(leftTemp);
+  text = document.createTextNode(leftPoint.text());
   
   tr.appendChild(td);
   td.appendChild(text);
 
   td = document.createElement("td");
-  text = document.createTextNode(rightTemp);
+  text = document.createTextNode(rightPoint.text());
   tr.appendChild(td);
   td.appendChild(text);
 
   td = document.createElement("td");
-  text = document.createTextNode(ETemp);
+  text = document.createTextNode(ETemp.text());
   tr.appendChild(td);
   td.appendChild(text);
 }
