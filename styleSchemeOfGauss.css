@@ -1,0 +1,23 @@
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+p{
+    padding: 0;
+}
+.ResultTable{
+    border-collapse: collapse;
+    width: 600px;
+}
+.ResultTable td, .ResultTable th{
+    border: 1px solid gray;
+    text-align: center;
+}
+.inputTable td{
+    text-align: center;
+}
+.inputTable input{
+    width: 30px;
+    text-align: right;
+    height: 100%;
+    color: lightcoral;
+}
